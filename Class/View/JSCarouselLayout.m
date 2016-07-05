@@ -12,9 +12,8 @@
 {
     CGFloat _viewHeight;
     CGFloat _itemHeight;
+    CGFloat _DefaultInsetLeft;
 }
-
-
 @end
 
 @implementation JSCarouselLayout
@@ -31,7 +30,8 @@
     _viewHeight = CGRectGetWidth(self.collectionView.frame);
     _itemHeight = self.itemSize.width;
     //初始状态
-    self.collectionView.contentInset = UIEdgeInsetsMake(0, (_viewHeight - _itemHeight) / 2, 0, (_viewHeight - _itemHeight) / 2);
+    _DefaultInsetLeft = _DefaultInsetLeft == 0?-(_viewHeight - _itemHeight)/ 2:_DefaultInsetLeft;
+    self.collectionView.contentInset = UIEdgeInsetsMake(0,  _DefaultInsetLeft, 0, (_viewHeight - _itemHeight) / 2);
     
 }
 /**
@@ -108,6 +108,8 @@
     if (self.carouselSlideIndexBlock) {
         self.carouselSlideIndexBlock((NSInteger)index);
     }
+    
+    _DefaultInsetLeft = (_viewHeight - _itemHeight)/ 2;
     
     return proposedContentOffset;
 }
