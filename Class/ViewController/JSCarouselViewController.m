@@ -43,7 +43,7 @@
     _indexLabel.textAlignment = NSTextAlignmentCenter;
     _indexLabel.font = [UIFont systemFontOfSize:13];
     _allCount = [self.viewModel.data count];
-    _indexLabel.text = [NSString stringWithFormat:@"浏览记录(1/%li)",_allCount];
+    _indexLabel.text = [NSString stringWithFormat:@"浏览记录(2/%li)",_allCount];
     [self.view addSubview:_indexLabel];
     
 }
